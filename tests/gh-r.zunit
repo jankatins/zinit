@@ -304,6 +304,11 @@
   $git_sizer --version
   assert $state equals 0
 }
+@test 'godot' { # Multi-platform 2D and 3D game engine
+  run zinit sbin'**/godot -> godot' for @godotengine/godot;
+  local godot="$ZPFX/bin/godot"; assert $state equals 0; assert "$godot" is_executable
+  run $godot --help; assert $output contains 'Godot Engine'
+}
 @test 'go-james' { # James is your butler and helps you to create, build, debug, test and run your Go projects
   run zinit sbin'**/go-james -> go-james' for @pieterclaerhout/go-james
   assert $state equals 0
